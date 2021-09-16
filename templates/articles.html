@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-md-10 offset-md-3">
+        <div class="col-lg-8">
+            <h3>Makaleler</h3>
+            <hr>
+            <form>
+                {% csrf_token %}
+                <input type="text", name="keyword", class="input-sm" placeholder="  Ara..." style="padding: 1px;"></input>   <!--keyword get request sonrası bize dönülen anahtar kelimemiz ancak bunu yani get requesti password gönderme işleminde yapmamalıyız çünkü keyword değerimiz get request sonrasu url çubuğubda görüncektir -->
+                <button type="submit" class="btn btn-danger" style="padding: 5px; padding-inline-end: 15px; padding-inline-start: 15px;">Bul</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% if articles %}
+
+{% for article in articles %}
+{% include "includes/posttemplate.html" %}
+{% endfor %}
+
+{% else %}
+
+<div class="row">
+    <div class="col-md-10 offset-md-3">
+        <div class="col-lg-8">
+            <div class="alert alert-danger">Makale Bulunamadı</div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock body %}

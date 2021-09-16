@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block body %}
+{% load crispy_forms_tags %}  <!--crispy filtre kullanacağımızı djangoya söyledik -->
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h3>Giriş Yap</h3>
+        <form method="post">      
+            
+            {% csrf_token %}
+            {{form|crispy}}  <!--formu crispy şeklinde göstermek için formu crispy olarak gönderdik-->
+            <button type="submit" class="btn btn-danger">Giriş Yap</button>
+            
+        </form>
+        <hr>
+    </div>
+</div>
+
+{% endblock %}
